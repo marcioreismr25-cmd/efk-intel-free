@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>EFK INTEL FREE</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d18;color:#eaf2ff;font-family:Arial,sans-serif}
+header{padding:24px 18px;background:#101b30;border-bottom:1px solid #20395e}
+.logo{font-size:27px;font-weight:900;color:#35a7ff;letter-spacing:1px}
+.logo span{color:white}
+.sub{font-size:12px;color:#91a9c8;margin-top:5px}
+main{padding:18px;max-width:850px;margin:auto}
+h2{font-size:19px;margin:22px 0 12px}
+.panel{background:#111e32;border:1px solid #20395e;border-radius:13px;padding:17px;margin-bottom:15px}
+input,select{width:100%;padding:14px;margin:7px 0;background:#081426;border:1px solid #29476c;border-radius:9px;color:white;font-size:15px}
+button{width:100%;padding:14px;background:#087fe5;color:white;border:0;border-radius:9px;font-size:16px;font-weight:bold;margin-top:8px}
+button:active{opacity:.7}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{background:#111e32;border:1px solid #20395e;border-radius:12px;padding:15px;min-height:105px}
+.item b{display:block;color:#42b1ff;margin-bottom:8px}
+.item small{color:#9eb1ca;line-height:1.4}
+a{color:#55b9ff;text-decoration:none}
+.links a{display:block;padding:12px;border-bottom:1px solid #263b55}
+footer{text-align:center;color:#7085a3;font-size:11px;padding:25px}
+.status{color:#4cdb9a;font-size:12px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">EFK <span>INTEL</span></div>
+ <div class="sub">CENTRAL DE PESQUISAS OSINT • FREE</div>
+</header>
+
+<main>
+ <div class="panel">
+  <div class="status">● SISTEMA ONLINE — VERSÃO INICIAL</div>
+  <h2>Painel de pesquisas</h2>
+  <select id="tipo">
+   <option value="geral">Pesquisa geral em fontes públicas</option>
+   <option value="site">Sites e domínios</option>
+   <option value="empresa">Empresas e informações públicas</option>
+   <option value="usuario">Usuários e perfis públicos</option>
+   <option value="noticia">Notícias e publicações</option>
+   <option value="tecnico">Informações técnicas de domínio</option>
+  </select>
+  <input id="consulta" placeholder="Digite o termo da pesquisa">
+  <button onclick="pesquisar()">INICIAR PESQUISA</button>
+  <p style="font-size:11px;color:#91a9c8">
+   As pesquisas são realizadas em fontes externas públicas.
+  </p>
+ </div>
+
+ <h2>Módulos OSINT</h2>
+ <div class="grid">
+  <div class="item"><b>🔎 Pesquisa geral</b><small>Busca de informações publicadas na internet.</small></div>
+  <div class="item"><b>🌐 Domínios</b><small>Consulta técnica de sites e domínios.</small></div>
+  <div class="item"><b>👤 Perfis públicos</b><small>Pesquisa de nomes de usuário em plataformas públicas.</small></div>
+  <div class="item"><b>📧 Segurança de e-mail</b><small>Verificação de exposição da própria conta.</small></div>
+  <div class="item"><b>🖼️ Imagens</b><small>Pesquisa reversa de imagens.</small></div>
+  <div class="item"><b>🏢 Empresas</b><small>Informações empresariais públicas.</small></div>
+ </div>
+
+ <h2>Ferramentas externas</h2>
+ <div class="panel links">
+  <a href="https://osintframework.com/" target="_blank">OSINT Framework ↗</a>
+  <a href="https://www.virustotal.com/" target="_blank">VirusTotal — análise de arquivos e domínios ↗</a>
+  <a href="https://who.is/" target="_blank">WHOIS — domínios ↗</a>
+  <a href="https://dns.google/" target="_blank">Google DNS ↗</a>
+  <a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned — sua própria conta ↗</a>
+  <a href="https://lens.google.com/" target="_blank">Google Lens — pesquisa de imagens ↗</a>
+  <a href="https://github.com/sherlock-project/sherlock" target="_blank">Sherlock — usuários públicos ↗</a>
+ </div>
+
+ <div class="panel">
+  <h2>Histórico e banco de dados</h2>
+  <p style="color:#a8bad2;font-size:13px">
+   Módulo reservado para a próxima etapa: login, histórico sincronizado,
+   armazenamento online e relatórios de pesquisas.
+  </p>
+  <div class="status">● Aguardando conexão com banco online</div>
+ </div>
+</main>
+
+<footer>
+ EFK INTEL FREE © 2026<br>
+ Ferramenta de pesquisa em fontes públicas e autorizadas.
+</footer>
+
+<script>
+function pesquisar(){
+ const termo=document.getElementById("consulta").value.trim();
+ const tipo=document.getElementById("tipo").value;
+ if(!termo){alert("Digite um termo para pesquisar.");return;}
+ let q=termo;
+ if(tipo==="site") q="site: "+termo;
+ if(tipo==="empresa") q=termo+" empresa informações públicas";
+ if(tipo==="usuario") q='"'+termo+'" perfil público';
+ if(tipo==="noticia") q=termo+" notícias";
+ if(tipo==="tecnico") q=termo+" DNS WHOIS domínio";
+ window.open("https://www.google.com/search?q="+encodeURIComponent(q),"_blank");
+}
+document.getElementById("consulta").addEventListener("keydown",e=>{
+ if(e.key==="Enter")pesquisar();
+});
+</script>
+</body>
+  </html>
+  
